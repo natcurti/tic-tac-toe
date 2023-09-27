@@ -24,12 +24,12 @@ let gameAgainstPc = false;
 
 const x = `
 <div class="icon-x-gameplay X" >
-<img src="assets/img/icon-x.svg" alt="X" class='X'>
+<img src="assets/img/icon-X.svg" alt="X" class='X'>
 </div>
 `
 const o = `
 <div class="icon-o-gameplay O">
-<img src="assets/img/icon-o.svg" alt="O" class='O'>
+<img src="assets/img/icon-O.svg" alt="O" class='O'>
 </div>
 `
 
