@@ -47,6 +47,9 @@
     background-color: var(--cor-fundo-claro);
     border-radius: 0.938rem;
     box-shadow: inset 0px -5px 1px 1px #11232e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hoverO{
@@ -108,4 +111,44 @@
 
 .icon-x-gameplay img, .icon-o-gameplay img{
     width: 5rem;
+}
+
+@media (max-width: 480px){
+    .game__container{
+        width: 20.5rem;
+        grid-template-columns: repeat(3, 6rem);
+        grid-template-rows: auto repeat(3, 6rem) auto;
+        gap: 1.25rem;
+    }
+
+    .celula-jogo{
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .game__results{
+        width: 6rem;
+    }
+    
+    .celula-jogo img{
+        max-width: 3rem;
+    }
+
+    .game__turn{
+        width: 6rem;
+    }
+
+    .game__restart{
+        width: 2.5rem;
+        height: 2.5rem;
+        align-self: start;
+    }
+
+    .hoverO{
+        background-size: 50%;
+    }
+
+    .hoverX{
+        background-size: 50%;
+    }
 }

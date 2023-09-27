@@ -110,3 +110,18 @@
     background-color: var(--cor-azul-claro);
     cursor: pointer;
 }
+
+@media (max-width: 480px){
+    .main__container{
+        width: 23rem;
+        height: 26rem;
+    }
+
+    .newgame__buttons{
+        width: 17rem;
+    }
+    
+    .button-x, .button-o{
+        width: 8.25rem;
+    }
+}

@@ -11,7 +11,7 @@
 
 .game__winner-container{
     margin: 2.5rem auto 1.5rem;
-    width: 30rem;
+    width: 25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,12 +37,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .game__winner-X, .game__winner-O{
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
@@ -95,4 +95,46 @@
 #dialog::backdrop{
     background-color: black;
     opacity: 0.5;
+}
+
+@media (max-width: 600px){
+    .game__winner-container{
+        width: 18rem;
+    }
+
+    .game__winner-round{
+        gap: 1rem;
+    }
+
+    .game__winner-round img{
+        max-width: 2.5rem;
+    }
+    .game__winner-X, .game__winner-O{
+        font-size: 1rem;
+    }
+    .game__btn button{
+        font-size: 0.85rem;
+        padding: 0.5rem; 
+    }
+}
+
+@media (max-width: 450px){
+    .game__winner-container{
+        width: 13rem;
+    }
+
+    .game__winner-round{
+        gap: 1rem;
+    }
+
+    .game__winner-round img{
+        max-width: 1.5rem;
+    }
+    .game__winner-X, .game__winner-O{
+        font-size: 0.8rem;
+    }
+    .game__btn button{
+        font-size: 0.85rem;
+        padding: 0.5rem; 
+    }
 }
