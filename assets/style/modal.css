@@ -1,0 +1,98 @@
+#dialog{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 70vw;
+    margin: 0 auto;
+    background-color: var(--cor-fundo-claro);
+    border: none;
+    box-sizing: border-box;
+}
+
+.game__winner-container{
+    margin: 2.5rem auto 1.5rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__winner-title, .game__tie-title{
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--cor-cinza);
+    font-weight: 600;
+}
+
+.game__winner-round{
+    font-size: 1rem;
+}
+
+.game__tie-title{
+    font-size: 2.5rem;
+}
+
+.game__winner-round{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.game__winner-X, .game__winner-O{
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.game__winner-X{
+    color: var(--cor-azul-forte);
+}
+
+.game__winner-O{
+    color: var(--cor-amarelo-forte);
+}
+
+.game__btn{
+    display: flex;
+    gap: 1rem;
+}
+
+.game__btn button{
+    border: none;
+    border-radius: 0.625rem;
+    height: 3.25rem;
+    text-transform: uppercase;
+    color: var(--cor-fundo);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-top: 1.5rem;
+}
+
+.btn-quit{
+    background-color: var(--cor-cinza);
+    box-shadow: inset 0px -2.5px 0px 1px #899da5;
+}
+
+.btn-nextRound{
+    background-color: var(--cor-amarelo-forte);
+    box-shadow: inset 0px -2.5px 0px 1px #e49e1c;
+}
+
+.btn-quit:hover{
+    background-color: var(--cor-cinza-claro);
+    cursor: pointer;
+}
+
+.btn-nextRound:hover{
+    background-color: var(--cor-amarelo-claro);
+    cursor: pointer;
+}
+
+#dialog::backdrop{
+    background-color: black;
+    opacity: 0.5;
+}

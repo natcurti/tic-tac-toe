@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url(reset.css);
+@import url(menu-novo-jogo.css);
+@import url(game.css);
+@import url(modal.css);
+
+:root{
+    --fonte-principal: 'Outfit', sans-serif;
+    --cor-fundo: #1A2A33;
+    --cor-fundo-claro: #1F3641;
+    --cor-cinza: #A8BFC9;
+    --cor-cinza-claro: #DBE8ED;
+    --cor-azul-forte: #31C3BD;
+    --cor-azul-claro: #65E9E4;
+    --cor-amarelo-forte: #F2B137;
+    --cor-amarelo-claro: #FFC860;
+}
+
+body{
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-cinza);
+}

@@ -1,0 +1,112 @@
+.main__container{
+    width: 28rem;
+    height: 29rem;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    width: 4rem;
+}
+
+.newgame__container{
+    width: 100%;
+    height: 12.5rem;
+    background-color: var(--cor-fundo-claro);
+    border-radius: 0.938rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: inset 0px -5px 1px 1px #11232e;
+}
+
+.newgame__title{
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-cinza);
+}
+
+.newgame__buttons{
+    background-color: var(--cor-fundo);
+    width: 25.75rem;
+    height: 4.5rem;
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center;  
+}
+
+.button-x, .button-o{
+    border: none;
+    width: 12.375rem;
+    height: 3.375rem;
+    border-radius: 0.625rem;
+    transition: all 0.5s;
+}
+
+.button-x img, .button-o img{
+    width: 2rem;
+}
+
+.button-x{
+    background-color: transparent;
+}
+
+.button-o{
+    background-color: var(--cor-cinza);
+}
+
+.button-x:hover, .button-o:hover{
+    cursor: pointer;
+}
+
+.button-o:hover{
+    background-color: antiquewhite;
+}
+
+.button-x:hover{
+    background-color: #08131a;
+}
+
+.newgame__obs{
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--cor-cinza);
+}
+
+.button-computer, .button-multiplayer{
+    border: none;
+    border-radius: 0.938rem;
+    width: 100%;
+    height: 4.18rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cor-fundo);
+    transition: all 0.5s;
+}
+
+.button-computer{
+    background-color: var(--cor-amarelo-forte);    
+    box-shadow: inset 0px -5px 0px 1px #e49e1c;
+}
+
+.button-computer:hover{
+    background-color: var(--cor-amarelo-claro);
+    cursor: pointer;
+}
+
+.button-multiplayer{
+    background-color: var(--cor-azul-forte); 
+    box-shadow: inset 0px -5px 0px 1px #169490;
+}
+
+.button-multiplayer:hover{
+    background-color: var(--cor-azul-claro);
+    cursor: pointer;
+}
