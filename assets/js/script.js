@@ -1,5 +1,5 @@
 const btnStart = document.querySelectorAll('[data-play]');
-const btnIcons = document.querySelectorAll('#button-x-or-o');
+const btnIcons = document.querySelectorAll('[data-id]');
 const gameContainer = document.getElementById('start-game');
 const menuGame = document.getElementById('menu');
 const playerX = document.getElementById('player-x');
