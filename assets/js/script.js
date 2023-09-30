@@ -126,6 +126,23 @@ function playerVersusComputer(playerCPU){
     }  
 }
 
+function restartGameVersusComputer(turn){
+    cells.forEach(element => element.addEventListener('click', insertPlayVersusComputer));
+    if(turn === 'O' && playerComputer === 'O'){
+        setTimeout(() => {
+            gameAI(o, 'O', 'X')
+        }, 1000);
+        btnTurn.textContent = 'Vez do Computador';
+    } else if ((turn === 'O' && playerComputer === 'X') || (turn === 'X' && playerComputer === 'O')){
+        btnTurn.textContent = 'É a sua vez';      
+    } else if (turn === 'X' && playerComputer === 'X'){
+        setTimeout(() => {
+            gameAI(x, 'X', 'O')
+        }, 1000);
+        btnTurn.textContent = 'Vez do Computador';
+    } 
+}
+
 function insertPlayVersusComputer(event){
     if(whoseTurn = 'X' && playerComputer === 'O'){
         event.target.innerHTML = x;
@@ -180,10 +197,10 @@ function gameAI(icon, letter, whosNext){
 
 function verifyVictory(turn){
     victory = victoryConditions.some((element) => {
-        return element.every((index) => {
-            return cells[index].classList.contains(turn);
-        })
-    }) 
+         return element.every((index) => {
+             return cells[index].classList.contains(turn);
+         })
+     })
 
     if(victory && !(playerComputer)){
         turn === playerOne ? winMessage = 'Jogador 1 ganhou!' : winMessage = 'Jogador 2 ganhou!';
@@ -276,7 +293,7 @@ function quit(){
 function nextRound(){
     dialog.close();
     if(gameAgainstPc){
-        playerVersusComputer(whoseTurn);
+        restartGameVersusComputer(whoseTurn);
     } else {  
         playerVersusPlayer();
     }
