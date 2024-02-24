@@ -11,6 +11,10 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    width: 25.75rem;
+  }
 `;
 
 const ButtonIcon = styled.button`
@@ -28,6 +32,10 @@ const ButtonIcon = styled.button`
     cursor: pointer;
     background-color: ${(props) =>
       props.id === "circle" ? "var(--white)" : "var(--medium-gray)"};
+  }
+
+  @media (max-width: 480px) {
+    width: 12.375rem;
   }
 `;
 

@@ -10,6 +10,11 @@ const SectionContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: inset 0px -7px 0px 0px rgb(16, 33, 42);
+
+  @media (max-width: 480px) {
+    width: 28.75em;
+  }
 `;
 
 const Title = styled.h1`

@@ -54,6 +54,12 @@ body {
 	gap: 2rem;
 	width: 20.5rem;
 }
+
+@media(max-width: 480px){
+	#root{
+		width: 28.75rem;
+	}
+}
 `;
 
 export default GlobalStyle;
