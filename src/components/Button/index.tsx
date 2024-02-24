@@ -12,6 +12,13 @@ const ButtonContainer = styled.button`
   background-color: ${(props) =>
     props.id === "CPU" ? "var(--yellow)" : "var(--blue)"};
   box-shadow: inset 0px -3px 0px 3px ${(props) => (props.id === "CPU" ? "rgba(204,139,19,1)" : "rgba(17,140,135,1)")};
+  transition: background-color 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) =>
+      props.id === "CPU" ? "var(--light-yellow)" : "var(--light-blue)"};
+  }
 `;
 
 interface IButton {

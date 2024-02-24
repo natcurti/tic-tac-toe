@@ -14,12 +14,21 @@ const ButtonContainer = styled.div`
 `;
 
 const ButtonIcon = styled.button`
+  display: grid;
+  place-items: center;
   border-radius: 0.625rem;
   border: none;
   width: 8.25rem;
   height: 3.375rem;
   background-color: ${(props) =>
     props.id === "circle" ? "var(--off-white)" : "transparent"};
+  transition: background-color 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${(props) =>
+      props.id === "circle" ? "var(--white)" : "var(--medium-gray)"};
+  }
 `;
 
 interface IContainerButton {
