@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 :root{
 	--dark-gray: #1A2A33;
 	--medium-gray: #1F3641;
+	--light-gray: #647a85;
 	--off-white: #A8BFC9;
 	--white: #DBE8ED;
 	--yellow: #F2B137;
@@ -40,9 +41,19 @@ body {
 	font-family: "Outfit", sans-serif;
 	background-color: var(--dark-gray);
 	color: var(--off-white);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-
+#root{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	width: 20.5rem;
+}
 `;
 
 export default GlobalStyle;
