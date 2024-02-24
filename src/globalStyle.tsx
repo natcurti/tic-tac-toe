@@ -55,9 +55,15 @@ body {
 	width: 20.5rem;
 }
 
-@media(max-width: 480px){
+@media(min-width: 480px){
 	#root{
 		width: 28.75rem;
+	}
+}
+
+@media(min-width: 768px){
+	#root{
+		width: 40rem;
 	}
 }
 `;

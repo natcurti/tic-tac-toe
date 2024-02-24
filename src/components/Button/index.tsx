@@ -20,8 +20,12 @@ const ButtonContainer = styled.button`
       props.id === "CPU" ? "var(--light-yellow)" : "var(--light-blue)"};
   }
 
-  @media (max-width: 480px) {
+  @media (min-width: 480px) {
     width: 28.75rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 40rem;
   }
 `;
 

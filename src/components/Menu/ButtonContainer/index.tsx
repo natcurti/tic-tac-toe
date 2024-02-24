@@ -12,8 +12,12 @@ const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 480px) {
+  @media (min-width: 480px) {
     width: 25.75rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 38rem;
   }
 `;
 
@@ -34,8 +38,12 @@ const ButtonIcon = styled.button`
       props.id === "circle" ? "var(--white)" : "var(--medium-gray)"};
   }
 
-  @media (max-width: 480px) {
+  @media (min-width: 480px) {
     width: 12.375rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 18.5rem;
   }
 `;
 
