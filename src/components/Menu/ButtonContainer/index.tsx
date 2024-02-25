@@ -49,15 +49,21 @@ const ButtonIcon = styled.button`
 
 interface IContainerButton {
   iconCircle: string;
+  iconCross: string;
+  chooseIcon: (icon: string) => void;
 }
 
-export const ContainerButton = ({ iconCircle }: IContainerButton) => {
+export const ContainerButton = ({
+  iconCircle,
+  iconCross,
+  chooseIcon,
+}: IContainerButton) => {
   return (
     <ButtonContainer>
-      <ButtonIcon>
+      <ButtonIcon id={iconCross} onClick={() => chooseIcon("cross")}>
         <img src={cross} />
       </ButtonIcon>
-      <ButtonIcon id={iconCircle}>
+      <ButtonIcon id={iconCircle} onClick={() => chooseIcon("circle")}>
         <img src={circle} />
       </ButtonIcon>
     </ButtonContainer>

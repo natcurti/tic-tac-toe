@@ -36,11 +36,19 @@ const Text = styled.p`
   letter-spacing: 0.25px;
 `;
 
-export const Menu = () => {
+interface IMenu {
+  chooseIcon: (icon: string) => void;
+}
+
+export const Menu = ({ chooseIcon }: IMenu) => {
   return (
     <SectionContainer>
       <Title>Selecione o ícone do jogador 1</Title>
-      <ContainerButton iconCircle="circle" />
+      <ContainerButton
+        iconCircle="circle"
+        iconCross="cross"
+        chooseIcon={chooseIcon}
+      />
       <Text>Lembre-se: o X começa o jogo </Text>
     </SectionContainer>
   );

@@ -32,8 +32,13 @@ const ButtonContainer = styled.button`
 interface IButton {
   gameType: string;
   children: React.ReactNode;
+  chooseTypeOfGame: (gameType: string) => void;
 }
 
-export const Button = ({ gameType, children }: IButton) => {
-  return <ButtonContainer id={gameType}>{children}</ButtonContainer>;
+export const Button = ({ gameType, children, chooseTypeOfGame }: IButton) => {
+  return (
+    <ButtonContainer id={gameType} onClick={() => chooseTypeOfGame(gameType)}>
+      {children}
+    </ButtonContainer>
+  );
 };
