@@ -2,6 +2,7 @@ import { Logo } from "src/components/ComponentsCommon/Logo";
 import { CardTurn } from "src/components/ComponentsGamePage/CardTurn";
 import { ButtonRestart } from "src/components/ComponentsGamePage/ButtonRestart";
 import { GameBoard } from "src/components/ComponentsGamePage/GameBoard";
+import { CardResults } from "src/components/ComponentsGamePage/CardResults";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -14,6 +15,13 @@ const Main = styled.main`
   width: 100%;
 `;
 
+const ResultsContainer = styled.div`
+  margin-top: 1.25rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const GamePage = () => {
   return (
     <>
@@ -24,6 +32,11 @@ export const GamePage = () => {
       </Header>
       <Main>
         <GameBoard />
+        <ResultsContainer>
+          <CardResults></CardResults>
+          <CardResults></CardResults>
+          <CardResults></CardResults>
+        </ResultsContainer>
       </Main>
     </>
   );
