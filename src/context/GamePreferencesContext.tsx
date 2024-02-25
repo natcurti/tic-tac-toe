@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { IconPreferences } from "src/types/IconPreferences";
+import { useNavigate } from "react-router-dom";
 
 interface IGameContext {
   iconChoices: IconPreferences;
@@ -58,10 +59,20 @@ export const GamePreferencesProvider = ({
     if (typeOfGame === "") {
       if (gameType === "CPU") {
         setTypeOfGame("CPU");
+        startGame();
       } else {
         setTypeOfGame("Multiplayer");
+        startGame();
       }
     } else return;
+  };
+
+  const navigate = useNavigate();
+
+  const startGame = () => {
+    if (iconChoices.playerOneIcon !== "" && iconChoices.playerTwoIcon !== "") {
+      navigate("/new-game");
+    }
   };
 
   return (
