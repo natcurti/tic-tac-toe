@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import circle from "src/assets/img/circle-dark.svg";
 import cross from "src/assets/img/x-light.svg";
+import { useContext } from "react";
+import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 
 const ButtonContainer = styled.div`
   background-color: var(--dark-gray);
@@ -50,14 +52,14 @@ const ButtonIcon = styled.button`
 interface IContainerButton {
   iconCircle: string;
   iconCross: string;
-  chooseIcon: (icon: string) => void;
 }
 
 export const ContainerButton = ({
   iconCircle,
   iconCross,
-  chooseIcon,
 }: IContainerButton) => {
+  const { chooseIcon } = useContext(GamePreferencesContext);
+
   return (
     <ButtonContainer>
       <ButtonIcon id={iconCross} onClick={() => chooseIcon("cross")}>

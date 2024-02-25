@@ -18,7 +18,8 @@ const DEFAULT_VALUE = {
   chooseTypeOfGame: () => {},
 };
 
-const GamePreferencesContext = createContext<IGameContext>(DEFAULT_VALUE);
+export const GamePreferencesContext =
+  createContext<IGameContext>(DEFAULT_VALUE);
 
 GamePreferencesContext.displayName = "Game Preferences";
 

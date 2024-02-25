@@ -2,8 +2,8 @@ import { Button } from "src/components/Button";
 import { Logo } from "src/components/Logo";
 import { Menu } from "src/components/Menu";
 import styled from "styled-components";
-import { useState } from "react";
-import { IconPreferences } from "src/types/IconPreferences";
+import { useContext } from "react";
+import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 
 const SectionContainer = styled.section`
   display: flex;
@@ -12,45 +12,20 @@ const SectionContainer = styled.section`
 `;
 
 export const Home = () => {
-  const [iconChoices, setIconChoices] = useState<IconPreferences>({
-    playerOneIcon: "",
-    playerTwoIcon: "",
-  });
+  const { iconChoices, typeOfGame, chooseTypeOfGame } = useContext(
+    GamePreferencesContext
+  );
 
-  const [typeOfGame, setTypeOfGame] = useState<string>("");
-
-  const chooseIcon = (icon: string) => {
-    if (iconChoices.playerOneIcon === "" && iconChoices.playerTwoIcon === "") {
-      if (icon === "cross") {
-        setIconChoices({
-          playerOneIcon: "cross",
-          playerTwoIcon: "circle",
-        });
-      } else {
-        setIconChoices({
-          playerOneIcon: "circle",
-          playerTwoIcon: "cross",
-        });
-      }
-    } else return;
-  };
-
-  const chooseTypeOfGame = (gameType: string) => {
-    if (typeOfGame === "") {
-      if (gameType === "CPU") {
-        setTypeOfGame("CPU");
-      } else {
-        setTypeOfGame("Multiplayer");
-      }
-    } else return;
+  const showPreferences = () => {
+    console.log(iconChoices, typeOfGame);
   };
 
   return (
     <>
-      <header>
+      <header onClick={() => showPreferences()}>
         <Logo />
       </header>
-      <Menu chooseIcon={chooseIcon} />
+      <Menu />
       <SectionContainer>
         <Button gameType="CPU" chooseTypeOfGame={chooseTypeOfGame}>
           Jogue contra o computador
