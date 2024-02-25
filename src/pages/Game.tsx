@@ -33,9 +33,9 @@ export const GamePage = () => {
       <Main>
         <GameBoard />
         <ResultsContainer>
-          <CardResults></CardResults>
-          <CardResults></CardResults>
-          <CardResults></CardResults>
+          <CardResults title="X" result="10"></CardResults>
+          <CardResults title="Empates" result="5"></CardResults>
+          <CardResults title="O" result="10"></CardResults>
         </ResultsContainer>
       </Main>
     </>

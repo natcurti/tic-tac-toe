@@ -19,6 +19,10 @@ const Button = styled.button`
   background-color: var(--off-white);
   box-shadow: inset 0px -3px 0px 0px rgb(107, 137, 151);
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (min-width: 480px) {
     width: 3.5rem;
     height: 3.5rem;

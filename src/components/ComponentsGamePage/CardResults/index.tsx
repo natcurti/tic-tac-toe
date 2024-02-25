@@ -3,7 +3,12 @@ import styled from "styled-components";
 const CardResultsContainer = styled.div`
   width: 6rem;
   height: 4rem;
-  background-color: var(--blue);
+  background-color: ${(props) =>
+    props.title === "X"
+      ? "var(--blue)"
+      : props.title === "Empates"
+      ? "var(--off-white)"
+      : "var(--yellow)"};
   border-radius: 0.625rem;
   display: flex;
   flex-direction: column;
@@ -42,22 +47,19 @@ const CardResultsContainer = styled.div`
 
   @media (min-width: 768px) {
     width: 8rem;
-
-    h2 {
-      font-size: 1rem;
-    }
-
-    p {
-      font-size: 1.75rem;
-    }
   }
 `;
 
-export const CardResults = () => {
+interface ICardResults {
+  title: string;
+  result: string;
+}
+
+export const CardResults = ({ title, result }: ICardResults) => {
   return (
-    <CardResultsContainer>
-      <h2>X (Você)</h2>
-      <p>20</p>
+    <CardResultsContainer title={title}>
+      <h2>{title}</h2>
+      <p>{result}</p>
     </CardResultsContainer>
   );
 };

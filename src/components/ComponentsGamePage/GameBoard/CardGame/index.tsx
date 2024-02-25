@@ -7,6 +7,10 @@ const CardGameContainer = styled.div`
   box-shadow: inset 0px -5px 0px 0px rgb(16, 33, 42);
   border-radius: 0.625rem;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (min-width: 480px) {
     width: 7rem;
     height: 7rem;
