@@ -11,6 +11,13 @@ const ContainerStyled = styled.div`
     width: 2rem;
     height: 2rem;
   }
+
+  @media (min-width: 480px) {
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
 `;
 
 export const Logo = () => {

@@ -27,6 +27,30 @@ const CardResultsContainer = styled.div`
     font-weight: 700;
     font-size: 1.25rem;
   }
+
+  @media (min-width: 480px) {
+    width: 7rem;
+
+    h2 {
+      font-size: 0.875rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 8rem;
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 1.75rem;
+    }
+  }
 `;
 
 export const CardResults = () => {

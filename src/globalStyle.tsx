@@ -36,30 +36,19 @@ body {
 	font-family: "Outfit", sans-serif;
 	background-color: var(--dark-gray);
 	color: var(--off-white);
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 #root{
+	padding: 1rem;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 2rem;
-	width: 20.5rem;
-}
-
-@media(min-width: 480px){
-	#root{
-		width: 28.75rem;
-	}
-}
-
-@media(min-width: 768px){
-	#root{
-		width: 40rem;
-	}
 }
 `;
 

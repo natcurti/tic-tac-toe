@@ -19,9 +19,23 @@ const CardTurnContainer = styled.div`
     text-transform: uppercase;
   }
 
-  img {
-    width: 1rem;
-    height: 1rem;
+  div {
+    display: grid;
+    place-items: center;
+
+    img {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  @media (min-width: 480px) {
+    width: 8rem;
+    height: 3.5rem;
+
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 
