@@ -16,6 +16,7 @@ const CardTurnContainer = styled.div`
   p {
     font-size: 0.725rem;
     font-weight: 700;
+    text-transform: uppercase;
   }
 
   img {
