@@ -1,6 +1,6 @@
-import { Button } from "src/components/Button";
-import { Logo } from "src/components/Logo";
-import { Menu } from "src/components/Menu";
+import { Button } from "src/components/ComponentsHome/Button";
+import { Logo } from "src/components/ComponentsCommon/Logo";
+import { Menu } from "src/components/ComponentsHome/Menu";
 import styled from "styled-components";
 import { useContext } from "react";
 import { GamePreferencesContext } from "src/context/GamePreferencesContext";
@@ -12,17 +12,10 @@ const SectionContainer = styled.section`
 `;
 
 export const Home = () => {
-  const { iconChoices, typeOfGame, chooseTypeOfGame } = useContext(
-    GamePreferencesContext
-  );
-
-  const showPreferences = () => {
-    console.log(iconChoices, typeOfGame);
-  };
-
+  const { chooseTypeOfGame } = useContext(GamePreferencesContext);
   return (
     <>
-      <header onClick={() => showPreferences()}>
+      <header>
         <Logo />
       </header>
       <Menu />
