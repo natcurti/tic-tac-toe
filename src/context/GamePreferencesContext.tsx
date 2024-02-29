@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 interface IGameContext {
   iconChoices: IconPreferences;
   typeOfGame: string;
+  setIconChoices: (icons: IconPreferences) => void;
+  setTypeOfGame: (gameType: string) => void;
   chooseIcon: (icon: string) => void;
   chooseTypeOfGame: (gameType: string) => void;
 }
@@ -15,6 +17,8 @@ const DEFAULT_VALUE = {
     playerTwoIcon: "",
   },
   typeOfGame: "",
+  setIconChoices: () => {},
+  setTypeOfGame: () => {},
   chooseIcon: () => {},
   chooseTypeOfGame: () => {},
 };
@@ -77,7 +81,14 @@ export const GamePreferencesProvider = ({
 
   return (
     <GamePreferencesContext.Provider
-      value={{ iconChoices, typeOfGame, chooseIcon, chooseTypeOfGame }}
+      value={{
+        iconChoices,
+        typeOfGame,
+        setIconChoices,
+        setTypeOfGame,
+        chooseIcon,
+        chooseTypeOfGame,
+      }}
     >
       {children}
     </GamePreferencesContext.Provider>

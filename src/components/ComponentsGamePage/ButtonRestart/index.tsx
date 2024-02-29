@@ -1,5 +1,8 @@
 import restart from "src/assets/img/restart.svg";
 import styled from "styled-components";
+import { GamePreferencesContext } from "src/context/GamePreferencesContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ButtonContainer = styled.div`
   width: 4.5rem;
@@ -35,9 +38,24 @@ const Button = styled.button`
 `;
 
 export const ButtonRestart = () => {
+  const { iconChoices, typeOfGame, setIconChoices, setTypeOfGame } = useContext(
+    GamePreferencesContext
+  );
+  const navigate = useNavigate();
+
+  const resetGame = () => {
+    setIconChoices({
+      playerOneIcon: "",
+      playerTwoIcon: "",
+    });
+    setTypeOfGame("");
+    navigate("/");
+    console.log(iconChoices, typeOfGame);
+  };
+
   return (
     <ButtonContainer>
-      <Button>
+      <Button onClick={resetGame}>
         <img src={restart} />
       </Button>
     </ButtonContainer>
