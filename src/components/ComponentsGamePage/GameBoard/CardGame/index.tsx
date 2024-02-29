@@ -22,6 +22,10 @@ const CardGameContainer = styled.div`
   }
 `;
 
-export const CardGame = () => {
-  return <CardGameContainer></CardGameContainer>;
+interface ICardGame {
+  changeTurn: () => void;
+}
+
+export const CardGame = ({ changeTurn }: ICardGame) => {
+  return <CardGameContainer onClick={changeTurn}></CardGameContainer>;
 };

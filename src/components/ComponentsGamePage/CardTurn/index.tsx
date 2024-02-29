@@ -1,6 +1,8 @@
 import circle from "src/assets/img/circle-light.svg";
-// import cross from "src/assets/img/x-light.svg";
+import cross from "src/assets/img/x-light.svg";
 import styled from "styled-components";
+import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
+import { useContext } from "react";
 
 const CardTurnContainer = styled.div`
   background-color: var(--medium-gray);
@@ -40,11 +42,20 @@ const CardTurnContainer = styled.div`
 `;
 
 export const CardTurn = () => {
+  const context = useContext(WhoIsTurnContext);
+
+  let whoIsTurnSymbol;
+  if (context?.turn === "cross") {
+    whoIsTurnSymbol = cross;
+  } else {
+    whoIsTurnSymbol = circle;
+  }
+
   return (
     <CardTurnContainer>
       <p>É a vez do: </p>
       <div>
-        <img src={circle} />
+        <img src={whoIsTurnSymbol} />
       </div>
     </CardTurnContainer>
   );
