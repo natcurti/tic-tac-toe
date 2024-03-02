@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GamePreferencesProvider } from "./context/GamePreferencesContext";
 import { WhoIsTurnProvider } from "./context/WhoIsTurnContext";
+import { MovesContextProvider } from "./context/Moves";
 
 function App() {
   return (
@@ -12,10 +13,12 @@ function App() {
         <GlobalStyle />
         <GamePreferencesProvider>
           <WhoIsTurnProvider>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/new-game" element={<GamePage />} />
-            </Routes>
+            <MovesContextProvider>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/new-game" element={<GamePage />} />
+              </Routes>
+            </MovesContextProvider>
           </WhoIsTurnProvider>
         </GamePreferencesProvider>
       </BrowserRouter>

@@ -3,6 +3,7 @@ import cross from "src/assets/img/x-blue.svg";
 import circle from "src/assets/img/circle-yellow.svg";
 import { useContext, useEffect, useState } from "react";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
+import { MovesContext } from "src/context/Moves";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;
@@ -61,32 +62,34 @@ interface ICardGame {
 }
 
 export const CardGame = ({ id }: ICardGame) => {
-  const context = useContext(WhoIsTurnContext);
+  const turnContext = useContext(WhoIsTurnContext);
+  const movesContext = useContext(MovesContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
   const [isHovered, setIsHovered] = useState(true);
   const [disabled, setDisabled] = useState(false);
 
   const makeMove = (id: number) => {
-    if (context?.turn === "cross") {
+    if (turnContext?.turn === "cross") {
       setCardIcon(cross);
-      context?.setTurn("circle");
+      movesContext.setCrossMoves((previous) => [...previous, id]);
+      turnContext?.setTurn("circle");
     } else {
       setCardIcon(circle);
-      context?.setTurn("cross");
+      movesContext.setCircleMoves((previous) => [...previous, id]);
+      turnContext?.setTurn("cross");
     }
     setIsHovered(false);
     setDisabled(true);
-    console.log(id);
   };
 
   useEffect(() => {
-    if (context?.turn === "cross") {
+    if (turnContext?.turn === "cross") {
       setIconHover("cross");
     } else {
       setIconHover("circle");
     }
-  }, [context?.turn]);
+  }, [turnContext?.turn]);
 
   return (
     <CardGameContainer
