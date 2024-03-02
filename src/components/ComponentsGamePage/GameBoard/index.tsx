@@ -17,13 +17,13 @@ const GameBoardContainer = styled.div`
   }
 `;
 
-const boardGame = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const boardGame: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 export const GameBoard = () => {
   return (
     <GameBoardContainer>
       {boardGame.map((number) => (
-        <CardGame key={number} />
+        <CardGame key={number} id={number} />
       ))}
     </GameBoardContainer>
   );

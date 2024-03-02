@@ -7,6 +7,8 @@ import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 const CardGameContainer = styled.div<{
   $iconHover: string;
   $isHovered: boolean;
+  id: number;
+  disabled: boolean;
 }>`
   width: 6rem;
   height: 6rem;
@@ -54,13 +56,18 @@ const CardGameContainer = styled.div<{
   }
 `;
 
-export const CardGame = () => {
+interface ICardGame {
+  id: number;
+}
+
+export const CardGame = ({ id }: ICardGame) => {
   const context = useContext(WhoIsTurnContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
   const [isHovered, setIsHovered] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
-  const changeTurnAndAddIcon = () => {
+  const makeMove = (id: number) => {
     if (context?.turn === "cross") {
       setCardIcon(cross);
       context?.setTurn("circle");
@@ -69,6 +76,8 @@ export const CardGame = () => {
       context?.setTurn("cross");
     }
     setIsHovered(false);
+    setDisabled(true);
+    console.log(id);
   };
 
   useEffect(() => {
@@ -81,7 +90,9 @@ export const CardGame = () => {
 
   return (
     <CardGameContainer
-      onClick={changeTurnAndAddIcon}
+      id={id}
+      onClick={disabled ? () => {} : () => makeMove(id)}
+      disabled={disabled}
       $iconHover={iconHover}
       $isHovered={isHovered}
     >
