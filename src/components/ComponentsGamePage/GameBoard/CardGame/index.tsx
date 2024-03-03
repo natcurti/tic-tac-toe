@@ -1,19 +1,27 @@
 import styled from "styled-components";
 import cross from "src/assets/img/x-blue.svg";
 import circle from "src/assets/img/circle-yellow.svg";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 import { MovesContext } from "src/context/Moves";
+import checkWinner from "src/utils/checkWinner";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;
   $isHovered: boolean;
+  $victory: string;
+  $isWinnerCard: boolean;
   id: number;
   disabled: boolean;
 }>`
   width: 6rem;
   height: 6rem;
-  background-color: var(--medium-gray);
+  background-color: ${(props) =>
+    props.$victory === "cross" && props.$isWinnerCard === true
+      ? "var(--light-blue)"
+      : props.$victory === "circle" && props.$isWinnerCard === true
+      ? "var(--yellow)"
+      : "var(--medium-gray)"};
   box-shadow: inset 0px -5px 0px 0px rgb(16, 33, 42);
   border-radius: 0.625rem;
   display: grid;
@@ -68,6 +76,8 @@ export const CardGame = ({ id }: ICardGame) => {
   const [iconHover, setIconHover] = useState("cross");
   const [isHovered, setIsHovered] = useState(true);
   const [disabled, setDisabled] = useState(false);
+  const [isWinnerCard, setIsWinnerCard] = useState(false);
+  const [victory, setVictory] = useState("");
 
   const makeMove = (id: number) => {
     if (turnContext?.turn === "cross") {
@@ -79,15 +89,20 @@ export const CardGame = ({ id }: ICardGame) => {
       movesContext.setCircleMoves((previous) => [...previous, id]);
       turnContext?.setTurn("cross");
     }
-    checkWinner();
     setIsHovered(false);
     setDisabled(true);
   };
 
-  const checkWinner = () => {
-    console.log("verificar vencedor");
-    console.log(movesContext.circleMoves, movesContext.crossMoves);
-  };
+  const styleVictoryCards = useCallback(
+    (cards: number[]) => {
+      cards.map((item) => {
+        if (item === id) {
+          setIsWinnerCard(true);
+        }
+      });
+    },
+    [id]
+  );
 
   useEffect(() => {
     if (turnContext?.turn === "cross") {
@@ -97,6 +112,23 @@ export const CardGame = ({ id }: ICardGame) => {
     }
   }, [turnContext?.turn]);
 
+  useEffect(() => {
+    if (movesContext.circleMoves.length === 3) {
+      const winnerIsCircle = checkWinner(movesContext.circleMoves);
+      if (winnerIsCircle !== "") {
+        styleVictoryCards(winnerIsCircle);
+        setVictory("circle");
+      }
+    }
+    if (movesContext.crossMoves.length === 3) {
+      const winnerIsCross = checkWinner(movesContext.crossMoves);
+      if (winnerIsCross !== "") {
+        styleVictoryCards(winnerIsCross);
+        setVictory("cross");
+      }
+    }
+  }, [movesContext.circleMoves, movesContext.crossMoves, styleVictoryCards]);
+
   return (
     <CardGameContainer
       id={id}
@@ -104,6 +136,8 @@ export const CardGame = ({ id }: ICardGame) => {
       disabled={disabled}
       $iconHover={iconHover}
       $isHovered={isHovered}
+      $isWinnerCard={isWinnerCard}
+      $victory={victory}
     >
       {cardIcon !== "" ? <img src={cardIcon} /> : null}
     </CardGameContainer>

@@ -12,13 +12,15 @@ const victoryPositions = [
 const checkWinner = (moves: number[]) => {
   let victoryArray: number[] = [];
 
-  victoryPositions.some((array) => {
-    if (array.every((number, index) => number === moves[index])) {
-      return (victoryArray = array);
-    }
-  });
-
-  return victoryArray;
+  if (
+    victoryPositions.some((array) => {
+      if (array.every((number, index) => number === moves[index])) {
+        return (victoryArray = array);
+      }
+    })
+  ) {
+    return victoryArray;
+  } else return "";
 };
 
 export default checkWinner;
