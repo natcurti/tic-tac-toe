@@ -79,8 +79,14 @@ export const CardGame = ({ id }: ICardGame) => {
       movesContext.setCircleMoves((previous) => [...previous, id]);
       turnContext?.setTurn("cross");
     }
+    checkWinner();
     setIsHovered(false);
     setDisabled(true);
+  };
+
+  const checkWinner = () => {
+    console.log("verificar vencedor");
+    console.log(movesContext.circleMoves, movesContext.crossMoves);
   };
 
   useEffect(() => {

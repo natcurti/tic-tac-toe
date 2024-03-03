@@ -4,6 +4,7 @@ import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
+import { MovesContext } from "src/context/Moves";
 
 const ButtonContainer = styled.div`
   width: 4.5rem;
@@ -41,6 +42,7 @@ const Button = styled.button`
 export const ButtonRestart = () => {
   const { setIconChoices, setTypeOfGame } = useContext(GamePreferencesContext);
   const turnContext = useContext(WhoIsTurnContext);
+  const movesContext = useContext(MovesContext);
   const navigate = useNavigate();
 
   const resetGame = () => {
@@ -50,6 +52,8 @@ export const ButtonRestart = () => {
     });
     setTypeOfGame("");
     turnContext?.setTurn("cross");
+    movesContext.setCircleMoves([]);
+    movesContext.setCrossMoves([]);
     navigate("/");
   };
 
