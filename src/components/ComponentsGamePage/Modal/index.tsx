@@ -11,7 +11,7 @@ const ModalBackground = styled.div`
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
 `;
@@ -24,6 +24,25 @@ const ModalContainer = styled.div<{ $winner: string }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+
+  p {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    p {
+      color: ${(props) =>
+        props.$winner === "circle" ? "var(--yellow)" : "var(--blue)"};
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const Modal = () => {
@@ -37,7 +56,6 @@ const Modal = () => {
     whoIsWinner = "Jogador 2";
   }
   const [winnerIcon, setWinnerIcon] = useState("");
-
   useEffect(() => {
     if (winner === "cross") {
       setWinnerIcon(cross);
