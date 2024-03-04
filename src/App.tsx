@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GamePreferencesProvider } from "./context/GamePreferencesContext";
 import { WhoIsTurnProvider } from "./context/WhoIsTurnContext";
 import { MovesContextProvider } from "./context/Moves";
+import { VictoryContextProvider } from "./context/Victory";
 
 function App() {
   return (
@@ -14,10 +15,12 @@ function App() {
         <GamePreferencesProvider>
           <WhoIsTurnProvider>
             <MovesContextProvider>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/new-game" element={<GamePage />} />
-              </Routes>
+              <VictoryContextProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/new-game" element={<GamePage />} />
+                </Routes>
+              </VictoryContextProvider>
             </MovesContextProvider>
           </WhoIsTurnProvider>
         </GamePreferencesProvider>

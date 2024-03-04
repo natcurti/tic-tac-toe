@@ -4,6 +4,9 @@ import { ButtonRestart } from "src/components/ComponentsGamePage/ButtonRestart";
 import { GameBoard } from "src/components/ComponentsGamePage/GameBoard";
 import { CardResults } from "src/components/ComponentsGamePage/CardResults";
 import styled from "styled-components";
+import { useContext } from "react";
+import { VictoryContext } from "src/context/Victory";
+import Modal from "src/components/ComponentsGamePage/Modal";
 
 const Header = styled.header`
   width: 100%;
@@ -23,6 +26,9 @@ const ResultsContainer = styled.div`
 `;
 
 export const GamePage = () => {
+  const victoryContext = useContext(VictoryContext);
+  const winner = victoryContext.victory;
+
   return (
     <>
       <Header>
@@ -38,6 +44,7 @@ export const GamePage = () => {
           <CardResults title="O" result="10"></CardResults>
         </ResultsContainer>
       </Main>
+      {winner !== "" ? <Modal /> : null}
     </>
   );
 };

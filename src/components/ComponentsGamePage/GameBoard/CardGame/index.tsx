@@ -7,6 +7,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 import { MovesContext } from "src/context/Moves";
 import checkWinner from "src/utils/checkWinner";
+import { VictoryContext } from "src/context/Victory";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;
@@ -74,12 +75,12 @@ interface ICardGame {
 export const CardGame = ({ id }: ICardGame) => {
   const turnContext = useContext(WhoIsTurnContext);
   const movesContext = useContext(MovesContext);
+  const victoryContext = useContext(VictoryContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
   const [isHovered, setIsHovered] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [isWinnerCard, setIsWinnerCard] = useState(false);
-  const [victory, setVictory] = useState("");
 
   const makeMove = (id: number) => {
     if (turnContext?.turn === "cross") {
@@ -125,17 +126,22 @@ export const CardGame = ({ id }: ICardGame) => {
       const winnerIsCircle = checkWinner(movesContext.circleMoves);
       if (winnerIsCircle !== "") {
         styleVictoryCards("circle", winnerIsCircle);
-        setVictory("circle");
+        victoryContext.setVictory("circle");
       }
     }
     if (movesContext.crossMoves.length === 3) {
       const winnerIsCross = checkWinner(movesContext.crossMoves);
       if (winnerIsCross !== "") {
         styleVictoryCards("cross", winnerIsCross);
-        setVictory("cross");
+        victoryContext.setVictory("cross");
       }
     }
-  }, [movesContext.circleMoves, movesContext.crossMoves, styleVictoryCards]);
+  }, [
+    movesContext.circleMoves,
+    movesContext.crossMoves,
+    styleVictoryCards,
+    victoryContext,
+  ]);
 
   return (
     <CardGameContainer
@@ -145,7 +151,7 @@ export const CardGame = ({ id }: ICardGame) => {
       $iconHover={iconHover}
       $isHovered={isHovered}
       $isWinnerCard={isWinnerCard}
-      $victory={victory}
+      $victory={victoryContext.victory}
     >
       {cardIcon !== "" ? <img src={cardIcon} /> : null}
     </CardGameContainer>
