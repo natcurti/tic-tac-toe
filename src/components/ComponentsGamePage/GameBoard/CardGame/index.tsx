@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import cross from "src/assets/img/x-blue.svg";
 import circle from "src/assets/img/circle-yellow.svg";
+import crossDark from "src/assets/img/cross-dark.svg";
+import circleDark from "src/assets/img/circle-dark.svg";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 import { MovesContext } from "src/context/Moves";
@@ -22,7 +24,7 @@ const CardGameContainer = styled.div<{
       : props.$victory === "circle" && props.$isWinnerCard === true
       ? "var(--yellow)"
       : "var(--medium-gray)"};
-  box-shadow: inset 0px -5px 0px 0px rgb(16, 33, 42);
+  box-shadow: inset 0px -5px 0px 0px ${(props) => (props.$victory === "cross" && props.$isWinnerCard === true ? "rgba(17,140,135,1)" : props.$victory === "circle" && props.$isWinnerCard === true ? "rgba(204,139,19,1)" : "rgb(16, 33, 42)")};
   border-radius: 0.625rem;
   display: grid;
   place-items: center;
@@ -94,10 +96,16 @@ export const CardGame = ({ id }: ICardGame) => {
   };
 
   const styleVictoryCards = useCallback(
-    (cards: number[]) => {
+    (winner: string, cards: number[]) => {
       cards.map((item) => {
         if (item === id) {
           setIsWinnerCard(true);
+          if (winner === "circle") {
+            setCardIcon(circleDark);
+          }
+          if (winner === "cross") {
+            setCardIcon(crossDark);
+          }
         }
       });
     },
@@ -116,14 +124,14 @@ export const CardGame = ({ id }: ICardGame) => {
     if (movesContext.circleMoves.length === 3) {
       const winnerIsCircle = checkWinner(movesContext.circleMoves);
       if (winnerIsCircle !== "") {
-        styleVictoryCards(winnerIsCircle);
+        styleVictoryCards("circle", winnerIsCircle);
         setVictory("circle");
       }
     }
     if (movesContext.crossMoves.length === 3) {
       const winnerIsCross = checkWinner(movesContext.crossMoves);
       if (winnerIsCross !== "") {
-        styleVictoryCards(winnerIsCross);
+        styleVictoryCards("cross", winnerIsCross);
         setVictory("cross");
       }
     }
