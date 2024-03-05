@@ -5,7 +5,7 @@ import { GameBoard } from "src/components/ComponentsGamePage/GameBoard";
 import { CardResults } from "src/components/ComponentsGamePage/CardResults";
 import styled from "styled-components";
 import { useContext } from "react";
-import { VictoryContext } from "src/context/Victory";
+import { VictoryContext } from "src/context/VictoryContext";
 import Modal from "src/components/ComponentsGamePage/Modal";
 
 const Header = styled.header`

@@ -5,9 +5,9 @@ import crossDark from "src/assets/img/cross-dark.svg";
 import circleDark from "src/assets/img/circle-dark.svg";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
-import { MovesContext } from "src/context/Moves";
+import { MovesContext } from "src/context/MovesContext";
 import checkWinner from "src/utils/checkWinner";
-import { VictoryContext } from "src/context/Victory";
+import { VictoryContext } from "src/context/VictoryContext";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;

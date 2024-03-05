@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { VictoryContext } from "src/context/Victory";
+import { VictoryContext } from "src/context/VictoryContext";
 import styled from "styled-components";
 import ButtonModal from "./ButtonModal";
 import { GamePreferencesContext } from "src/context/GamePreferencesContext";
