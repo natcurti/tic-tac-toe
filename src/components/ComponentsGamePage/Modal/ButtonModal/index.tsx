@@ -17,10 +17,15 @@ const ButtonContainer = styled.button`
 
 interface IButtonModal {
   title: string;
+  onClick?: () => void;
 }
 
-const ButtonModal = ({ title }: IButtonModal) => {
-  return <ButtonContainer title={title}>{title}</ButtonContainer>;
+const ButtonModal = ({ title, onClick }: IButtonModal) => {
+  return (
+    <ButtonContainer title={title} onClick={onClick}>
+      {title}
+    </ButtonContainer>
+  );
 };
 
 export default ButtonModal;

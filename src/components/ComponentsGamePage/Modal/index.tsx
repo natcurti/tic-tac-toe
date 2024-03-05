@@ -5,6 +5,7 @@ import ButtonModal from "./ButtonModal";
 import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 import circle from "src/assets/img/circle-yellow.svg";
 import cross from "src/assets/img/x-blue.svg";
+import useRestartGame from "src/hooks/useRestartGame";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -55,7 +56,10 @@ const Modal = () => {
   } else {
     whoIsWinner = "Jogador 2";
   }
+
   const [winnerIcon, setWinnerIcon] = useState("");
+  const restartGame = useRestartGame();
+
   useEffect(() => {
     if (winner === "cross") {
       setWinnerIcon(cross);
@@ -73,7 +77,7 @@ const Modal = () => {
           <p>ganhou essa rodada!</p>
         </div>
         <div>
-          <ButtonModal title="Sair" />
+          <ButtonModal title="Sair" onClick={restartGame} />
           <ButtonModal title="Jogar novamente" />
         </div>
       </ModalContainer>

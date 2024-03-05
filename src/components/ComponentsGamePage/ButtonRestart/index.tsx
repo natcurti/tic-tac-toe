@@ -1,10 +1,6 @@
 import restart from "src/assets/img/restart.svg";
 import styled from "styled-components";
-import { GamePreferencesContext } from "src/context/GamePreferencesContext";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
-import { MovesContext } from "src/context/Moves";
+import useRestartGame from "src/hooks/useRestartGame";
 
 const ButtonContainer = styled.div`
   width: 4.5rem;
@@ -40,26 +36,11 @@ const Button = styled.button`
 `;
 
 export const ButtonRestart = () => {
-  const { setIconChoices, setTypeOfGame } = useContext(GamePreferencesContext);
-  const turnContext = useContext(WhoIsTurnContext);
-  const movesContext = useContext(MovesContext);
-  const navigate = useNavigate();
-
-  const resetGame = () => {
-    setIconChoices({
-      playerOneIcon: "",
-      playerTwoIcon: "",
-    });
-    setTypeOfGame("");
-    turnContext?.setTurn("cross");
-    movesContext.setCircleMoves([]);
-    movesContext.setCrossMoves([]);
-    navigate("/");
-  };
+  const restartGame = useRestartGame();
 
   return (
     <ButtonContainer>
-      <Button onClick={resetGame}>
+      <Button onClick={restartGame}>
         <img src={restart} />
       </Button>
     </ButtonContainer>
