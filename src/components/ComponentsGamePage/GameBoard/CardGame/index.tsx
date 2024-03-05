@@ -73,9 +73,10 @@ interface ICardGame {
 }
 
 export const CardGame = ({ id }: ICardGame) => {
-  const turnContext = useContext(WhoIsTurnContext);
-  const movesContext = useContext(MovesContext);
-  const victoryContext = useContext(VictoryContext);
+  const { turn, setTurn } = useContext(WhoIsTurnContext);
+  const { circleMoves, crossMoves, setCircleMoves, setCrossMoves } =
+    useContext(MovesContext);
+  const { victory, setVictory } = useContext(VictoryContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
   const [isHovered, setIsHovered] = useState(true);
@@ -83,14 +84,14 @@ export const CardGame = ({ id }: ICardGame) => {
   const [isWinnerCard, setIsWinnerCard] = useState(false);
 
   const makeMove = (id: number) => {
-    if (turnContext?.turn === "cross") {
+    if (turn === "cross") {
       setCardIcon(cross);
-      movesContext.setCrossMoves((previous) => [...previous, id]);
-      turnContext?.setTurn("circle");
+      setCrossMoves((previous) => [...previous, id]);
+      setTurn("circle");
     } else {
       setCardIcon(circle);
-      movesContext.setCircleMoves((previous) => [...previous, id]);
-      turnContext?.setTurn("cross");
+      setCircleMoves((previous) => [...previous, id]);
+      setTurn("cross");
     }
     setIsHovered(false);
     setDisabled(true);
@@ -114,34 +115,29 @@ export const CardGame = ({ id }: ICardGame) => {
   );
 
   useEffect(() => {
-    if (turnContext?.turn === "cross") {
+    if (turn === "cross") {
       setIconHover("cross");
     } else {
       setIconHover("circle");
     }
-  }, [turnContext?.turn]);
+  }, [turn]);
 
   useEffect(() => {
-    if (movesContext.circleMoves.length === 3) {
-      const winnerIsCircle = checkWinner(movesContext.circleMoves);
+    if (circleMoves.length === 3) {
+      const winnerIsCircle = checkWinner(circleMoves);
       if (winnerIsCircle !== "") {
         styleVictoryCards("circle", winnerIsCircle);
-        victoryContext.setVictory("circle");
+        setVictory("circle");
       }
     }
-    if (movesContext.crossMoves.length === 3) {
-      const winnerIsCross = checkWinner(movesContext.crossMoves);
+    if (crossMoves.length === 3) {
+      const winnerIsCross = checkWinner(crossMoves);
       if (winnerIsCross !== "") {
         styleVictoryCards("cross", winnerIsCross);
-        victoryContext.setVictory("cross");
+        setVictory("cross");
       }
     }
-  }, [
-    movesContext.circleMoves,
-    movesContext.crossMoves,
-    styleVictoryCards,
-    victoryContext,
-  ]);
+  }, [circleMoves, crossMoves, styleVictoryCards, setVictory]);
 
   return (
     <CardGameContainer
@@ -151,7 +147,7 @@ export const CardGame = ({ id }: ICardGame) => {
       $iconHover={iconHover}
       $isHovered={isHovered}
       $isWinnerCard={isWinnerCard}
-      $victory={victoryContext.victory}
+      $victory={victory}
     >
       {cardIcon !== "" ? <img src={cardIcon} /> : null}
     </CardGameContainer>

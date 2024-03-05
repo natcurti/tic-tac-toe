@@ -42,10 +42,10 @@ const CardTurnContainer = styled.div`
 `;
 
 export const CardTurn = () => {
-  const context = useContext(WhoIsTurnContext);
+  const { turn } = useContext(WhoIsTurnContext);
 
   let whoIsTurnSymbol;
-  if (context?.turn === "cross") {
+  if (turn === "cross") {
     whoIsTurnSymbol = cross;
   } else {
     whoIsTurnSymbol = circle;

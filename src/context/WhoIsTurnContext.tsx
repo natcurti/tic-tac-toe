@@ -5,7 +5,10 @@ interface Turn {
   setTurn: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const WhoIsTurnContext = createContext<Turn | undefined>(undefined);
+export const WhoIsTurnContext = createContext<Turn>({
+  turn: "",
+  setTurn: () => {},
+});
 
 WhoIsTurnContext.displayName = "Who is Turn";
 
