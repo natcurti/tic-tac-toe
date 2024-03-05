@@ -26,8 +26,7 @@ const ResultsContainer = styled.div`
 `;
 
 export const GamePage = () => {
-  const victoryContext = useContext(VictoryContext);
-  const winner = victoryContext.victory;
+  const { victory } = useContext(VictoryContext);
 
   return (
     <>
@@ -44,7 +43,7 @@ export const GamePage = () => {
           <CardResults title="O" result="10"></CardResults>
         </ResultsContainer>
       </Main>
-      {winner !== "" ? <Modal /> : null}
+      {victory !== "" ? <Modal /> : null}
     </>
   );
 };
