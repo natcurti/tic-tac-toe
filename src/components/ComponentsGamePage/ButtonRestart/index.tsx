@@ -19,9 +19,11 @@ const Button = styled.button`
   border-radius: 0.35rem;
   background-color: var(--off-white);
   box-shadow: inset 0px -3px 0px 0px rgb(107, 137, 151);
+  transition: background 0.5s;
 
   &:hover {
     cursor: pointer;
+    background-color: var(--white);
   }
 
   @media (min-width: 480px) {
