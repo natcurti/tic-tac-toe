@@ -75,7 +75,8 @@ export const CardGame = ({ id }: ICardGame) => {
   const { turn, setTurn } = useContext(WhoIsTurnContext);
   const { circleMoves, crossMoves, setCircleMoves, setCrossMoves } =
     useContext(MovesContext);
-  const { victory, setVictory, endGame } = useContext(VictoryContext);
+  const { victory, setVictory, endGame, setEndGame } =
+    useContext(VictoryContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
   const [disabled, setDisabled] = useState(false);
@@ -85,7 +86,8 @@ export const CardGame = ({ id }: ICardGame) => {
     setCardIcon("");
     setDisabled(false);
     setIsWinnerCard(false);
-  }, [endGame]);
+    setEndGame(false);
+  }, [endGame, setEndGame]);
 
   const makeMove = (id: number) => {
     if (turn === "cross") {
