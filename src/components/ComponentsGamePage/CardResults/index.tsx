@@ -4,7 +4,9 @@ const CardResultsContainer = styled.div`
   width: 6rem;
   height: 4rem;
   background-color: ${(props) =>
-    props.title === "X"
+    props.title === "X" ||
+    props.title === "X (Você)" ||
+    props.title === "X (CPU)"
       ? "var(--blue)"
       : props.title === "Empates"
       ? "var(--off-white)"

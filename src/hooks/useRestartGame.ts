@@ -6,7 +6,9 @@ import { VictoryContext } from "src/context/VictoryContext";
 import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 
 const useRestartGame = () => {
-  const { setIconChoices, setTypeOfGame } = useContext(GamePreferencesContext);
+  const { setIconChoices, setTypeOfGame, setPlayerChoices } = useContext(
+    GamePreferencesContext
+  );
   const { setTurn } = useContext(WhoIsTurnContext);
   const { setCircleMoves, setCrossMoves } = useContext(MovesContext);
   const {
@@ -21,6 +23,10 @@ const useRestartGame = () => {
     setIconChoices({
       playerOneIcon: "",
       playerTwoIcon: "",
+    });
+    setPlayerChoices({
+      playerOne: "",
+      playerTwo: "",
     });
     setTypeOfGame("");
     setTurn("cross");
