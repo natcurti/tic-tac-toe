@@ -26,17 +26,8 @@ const ResultsContainer = styled.div`
 `;
 
 export const GamePage = () => {
-  const { victory } = useContext(VictoryContext);
-
-  let crossResults = 0;
-  let circleResults = 0;
-  const tieResults = 0;
-
-  if (victory === "cross") {
-    crossResults++;
-  } else if (victory === "circle") {
-    circleResults++;
-  }
+  const { victory, allCircleVictories, allCrossVictories } =
+    useContext(VictoryContext);
 
   return (
     <>
@@ -48,9 +39,9 @@ export const GamePage = () => {
       <Main>
         <GameBoard />
         <ResultsContainer>
-          <CardResults title="X" result={crossResults}></CardResults>
-          <CardResults title="Empates" result={tieResults}></CardResults>
-          <CardResults title="O" result={circleResults}></CardResults>
+          <CardResults title="X" result={allCrossVictories}></CardResults>
+          <CardResults title="Empates" result={0}></CardResults>
+          <CardResults title="O" result={allCircleVictories}></CardResults>
         </ResultsContainer>
       </Main>
       {victory !== "" ? <Modal /> : null}

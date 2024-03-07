@@ -14,8 +14,9 @@ const checkWinner = (moves: number[]) => {
 
   if (
     victoryPositions.some((array) => {
-      if (array.every((number, index) => number === moves[index])) {
-        return (victoryArray = array);
+      if (array.every((number) => moves.includes(number))) {
+        victoryArray = array;
+        return victoryArray;
       }
     })
   ) {

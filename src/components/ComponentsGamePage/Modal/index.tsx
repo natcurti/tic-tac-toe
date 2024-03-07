@@ -48,11 +48,10 @@ const ModalContainer = styled.div<{ $winner: string }>`
 `;
 
 const Modal = () => {
-  const victoryContext = useContext(VictoryContext);
-  const winner = victoryContext.victory;
+  const { victory } = useContext(VictoryContext);
   const { iconChoices } = useContext(GamePreferencesContext);
   let whoIsWinner: string = "";
-  if (iconChoices.playerOneIcon === winner) {
+  if (iconChoices.playerOneIcon === victory) {
     whoIsWinner = "Jogador 1";
   } else {
     whoIsWinner = "Jogador 2";
@@ -63,16 +62,16 @@ const Modal = () => {
   const newRound = useNewRound();
 
   useEffect(() => {
-    if (winner === "cross") {
+    if (victory === "cross") {
       setWinnerIcon(cross);
-    } else if (winner === "circle") {
+    } else if (victory === "circle") {
       setWinnerIcon(circle);
     }
-  }, [winner]);
+  }, [victory]);
 
   return (
     <ModalBackground>
-      <ModalContainer $winner={winner}>
+      <ModalContainer $winner={victory}>
         <p>{whoIsWinner} venceu!</p>
         <div>
           <img src={winnerIcon} alt="Símbolo Vencedor" />

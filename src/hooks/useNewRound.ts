@@ -4,9 +4,20 @@ import { VictoryContext } from "src/context/VictoryContext";
 
 const useNewRound = () => {
   const { setCircleMoves, setCrossMoves } = useContext(MovesContext);
-  const { setVictory, setEndGame } = useContext(VictoryContext);
+  const {
+    victory,
+    setVictory,
+    setEndGame,
+    setAllCircleVictories,
+    setAllCrossVictories,
+  } = useContext(VictoryContext);
 
   return () => {
+    if (victory === "cross") {
+      setAllCrossVictories((previous) => previous + 1);
+    } else if (victory === "circle") {
+      setAllCircleVictories((previous) => previous + 1);
+    }
     setCircleMoves([]);
     setCrossMoves([]);
     setVictory("");

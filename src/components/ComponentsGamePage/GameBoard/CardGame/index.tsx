@@ -128,15 +128,16 @@ export const CardGame = ({ id }: ICardGame) => {
   }, [turn]);
 
   useEffect(() => {
-    if (circleMoves.length === 3) {
+    if (circleMoves.length >= 3) {
       const winnerIsCircle = checkWinner(circleMoves);
       if (winnerIsCircle !== "") {
         styleVictoryCards("circle", winnerIsCircle);
         setVictory("circle");
       }
     }
-    if (crossMoves.length === 3) {
+    if (crossMoves.length >= 3) {
       const winnerIsCross = checkWinner(crossMoves);
+      console.log(winnerIsCross);
       if (winnerIsCross !== "") {
         styleVictoryCards("cross", winnerIsCross);
         setVictory("cross");
