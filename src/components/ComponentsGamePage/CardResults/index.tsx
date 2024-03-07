@@ -52,7 +52,7 @@ const CardResultsContainer = styled.div`
 
 interface ICardResults {
   title: string;
-  result: string;
+  result: number;
 }
 
 export const CardResults = ({ title, result }: ICardResults) => {

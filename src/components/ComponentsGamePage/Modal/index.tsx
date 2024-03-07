@@ -6,6 +6,7 @@ import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 import circle from "src/assets/img/circle-yellow.svg";
 import cross from "src/assets/img/x-blue.svg";
 import useRestartGame from "src/hooks/useRestartGame";
+import useNewRound from "src/hooks/useNewRound";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -59,6 +60,7 @@ const Modal = () => {
 
   const [winnerIcon, setWinnerIcon] = useState("");
   const restartGame = useRestartGame();
+  const newRound = useNewRound();
 
   useEffect(() => {
     if (winner === "cross") {
@@ -78,7 +80,7 @@ const Modal = () => {
         </div>
         <div>
           <ButtonModal title="Sair" onClick={restartGame} />
-          <ButtonModal title="Jogar novamente" />
+          <ButtonModal title="Jogar novamente" onClick={newRound} />
         </div>
       </ModalContainer>
     </ModalBackground>

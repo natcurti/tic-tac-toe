@@ -24,7 +24,7 @@ const ButtonContainer = styled.button`
 
 interface IButtonModal {
   title: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const ButtonModal = ({ title, onClick }: IButtonModal) => {

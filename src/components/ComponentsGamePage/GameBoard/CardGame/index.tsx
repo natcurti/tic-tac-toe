@@ -11,11 +11,10 @@ import { VictoryContext } from "src/context/VictoryContext";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;
-  $isHovered: boolean;
   $victory: string;
   $isWinnerCard: boolean;
   id: number;
-  disabled: boolean;
+  $disabled: boolean;
 }>`
   width: 6rem;
   height: 6rem;
@@ -33,9 +32,9 @@ const CardGameContainer = styled.div<{
   &:hover {
     cursor: pointer;
     background-image: ${(props) =>
-      props.$isHovered && props.$iconHover === "cross"
+      !props.$disabled && props.$iconHover === "cross"
         ? 'url("src/assets/img/cross-outlined.svg")'
-        : props.$isHovered && props.$iconHover === "circle"
+        : !props.$disabled && props.$iconHover === "circle"
         ? 'url("src/assets/img/oval-outlined.svg")'
         : null};
     background-repeat: no-repeat;
@@ -76,12 +75,17 @@ export const CardGame = ({ id }: ICardGame) => {
   const { turn, setTurn } = useContext(WhoIsTurnContext);
   const { circleMoves, crossMoves, setCircleMoves, setCrossMoves } =
     useContext(MovesContext);
-  const { victory, setVictory } = useContext(VictoryContext);
+  const { victory, setVictory, endGame } = useContext(VictoryContext);
   const [cardIcon, setCardIcon] = useState("");
   const [iconHover, setIconHover] = useState("cross");
-  const [isHovered, setIsHovered] = useState(true);
   const [disabled, setDisabled] = useState(false);
   const [isWinnerCard, setIsWinnerCard] = useState(false);
+
+  useEffect(() => {
+    setCardIcon("");
+    setDisabled(false);
+    setIsWinnerCard(false);
+  }, [endGame]);
 
   const makeMove = (id: number) => {
     if (turn === "cross") {
@@ -93,7 +97,6 @@ export const CardGame = ({ id }: ICardGame) => {
       setCircleMoves((previous) => [...previous, id]);
       setTurn("cross");
     }
-    setIsHovered(false);
     setDisabled(true);
   };
 
@@ -143,9 +146,8 @@ export const CardGame = ({ id }: ICardGame) => {
     <CardGameContainer
       id={id}
       onClick={disabled ? () => {} : () => makeMove(id)}
-      disabled={disabled}
+      $disabled={disabled}
       $iconHover={iconHover}
-      $isHovered={isHovered}
       $isWinnerCard={isWinnerCard}
       $victory={victory}
     >
