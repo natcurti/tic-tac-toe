@@ -26,7 +26,7 @@ const ResultsContainer = styled.div`
 `;
 
 export const GamePage = () => {
-  const { victory, allCircleVictories, allCrossVictories } =
+  const { victory, allCircleVictories, allCrossVictories, allTies } =
     useContext(VictoryContext);
 
   return (
@@ -40,7 +40,7 @@ export const GamePage = () => {
         <GameBoard />
         <ResultsContainer>
           <CardResults title="X" result={allCrossVictories}></CardResults>
-          <CardResults title="Empates" result={0}></CardResults>
+          <CardResults title="Empates" result={allTies}></CardResults>
           <CardResults title="O" result={allCircleVictories}></CardResults>
         </ResultsContainer>
       </Main>

@@ -137,11 +137,13 @@ export const CardGame = ({ id }: ICardGame) => {
     }
     if (crossMoves.length >= 3) {
       const winnerIsCross = checkWinner(crossMoves);
-      console.log(winnerIsCross);
       if (winnerIsCross !== "") {
         styleVictoryCards("cross", winnerIsCross);
         setVictory("cross");
       }
+    }
+    if (circleMoves.length + crossMoves.length === 9) {
+      setVictory("Empate");
     }
   }, [circleMoves, crossMoves, styleVictoryCards, setVictory]);
 

@@ -9,6 +9,8 @@ interface IVictory {
   setAllCrossVictories: React.Dispatch<React.SetStateAction<number>>;
   allCircleVictories: number;
   setAllCircleVictories: React.Dispatch<React.SetStateAction<number>>;
+  allTies: number;
+  setAllTies: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const VictoryContext = createContext<IVictory>({
@@ -20,6 +22,8 @@ export const VictoryContext = createContext<IVictory>({
   setAllCrossVictories: () => {},
   allCircleVictories: 0,
   setAllCircleVictories: () => {},
+  allTies: 0,
+  setAllTies: () => {},
 });
 
 interface IVictoryContextProvider {
@@ -33,6 +37,7 @@ export const VictoryContextProvider = ({
   const [endGame, setEndGame] = useState(false);
   const [allCrossVictories, setAllCrossVictories] = useState(0);
   const [allCircleVictories, setAllCircleVictories] = useState(0);
+  const [allTies, setAllTies] = useState(0);
 
   return (
     <VictoryContext.Provider
@@ -45,6 +50,8 @@ export const VictoryContextProvider = ({
         setAllCrossVictories,
         allCircleVictories,
         setAllCircleVictories,
+        allTies,
+        setAllTies,
       }}
     >
       {children}

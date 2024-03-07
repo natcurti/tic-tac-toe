@@ -18,7 +18,7 @@ const ModalBackground = styled.div`
   align-items: center;
 `;
 
-const ModalContainer = styled.div<{ $winner: string }>`
+const ModalContainer = styled.div<{ $winner: string; $modalText: string }>`
   width: 100%;
   height: 14.25rem;
   background-color: var(--medium-gray);
@@ -30,7 +30,8 @@ const ModalContainer = styled.div<{ $winner: string }>`
 
   p {
     text-transform: uppercase;
-    font-size: 0.875rem;
+    font-size: ${(props) =>
+      props.$modalText === "Empate" ? "2rem" : "0.875rem"};
     font-weight: 700;
   }
 
@@ -50,11 +51,13 @@ const ModalContainer = styled.div<{ $winner: string }>`
 const Modal = () => {
   const { victory } = useContext(VictoryContext);
   const { iconChoices } = useContext(GamePreferencesContext);
-  let whoIsWinner: string = "";
+  let modalText: string = "";
   if (iconChoices.playerOneIcon === victory) {
-    whoIsWinner = "Jogador 1";
+    modalText = "Jogador 1";
+  } else if (iconChoices.playerTwoIcon === victory) {
+    modalText = "Jogador 2";
   } else {
-    whoIsWinner = "Jogador 2";
+    modalText = "Empate";
   }
 
   const [winnerIcon, setWinnerIcon] = useState("");
@@ -71,12 +74,18 @@ const Modal = () => {
 
   return (
     <ModalBackground>
-      <ModalContainer $winner={victory}>
-        <p>{whoIsWinner} venceu!</p>
-        <div>
-          <img src={winnerIcon} alt="Símbolo Vencedor" />
-          <p>ganhou essa rodada!</p>
-        </div>
+      <ModalContainer $winner={victory} $modalText={modalText}>
+        {modalText === "Empate" ? (
+          <p>{modalText}</p>
+        ) : (
+          <p>{modalText} venceu!</p>
+        )}
+        {modalText === "Jogador 1" || modalText === "Jogador 2" ? (
+          <div>
+            <img src={winnerIcon} alt="Símbolo Vencedor" />
+            <p>ganhou essa rodada!</p>
+          </div>
+        ) : null}
         <div>
           <ButtonModal title="Sair" onClick={restartGame} />
           <ButtonModal title="Jogar novamente" onClick={newRound} />

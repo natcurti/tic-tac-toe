@@ -10,6 +10,7 @@ const useNewRound = () => {
     setEndGame,
     setAllCircleVictories,
     setAllCrossVictories,
+    setAllTies,
   } = useContext(VictoryContext);
 
   return () => {
@@ -17,6 +18,8 @@ const useNewRound = () => {
       setAllCrossVictories((previous) => previous + 1);
     } else if (victory === "circle") {
       setAllCircleVictories((previous) => previous + 1);
+    } else {
+      setAllTies((previous) => previous + 1);
     }
     setCircleMoves([]);
     setCrossMoves([]);
