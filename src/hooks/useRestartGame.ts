@@ -9,7 +9,12 @@ const useRestartGame = () => {
   const { setIconChoices, setTypeOfGame } = useContext(GamePreferencesContext);
   const { setTurn } = useContext(WhoIsTurnContext);
   const { setCircleMoves, setCrossMoves } = useContext(MovesContext);
-  const { setVictory } = useContext(VictoryContext);
+  const {
+    setVictory,
+    setAllCircleVictories,
+    setAllCrossVictories,
+    setAllTies,
+  } = useContext(VictoryContext);
   const navigate = useNavigate();
 
   return () => {
@@ -21,6 +26,9 @@ const useRestartGame = () => {
     setTurn("cross");
     setCircleMoves([]);
     setCrossMoves([]);
+    setAllCircleVictories(0);
+    setAllCrossVictories(0);
+    setAllTies(0);
     setVictory("");
     navigate("/");
   };

@@ -44,30 +44,27 @@ export const GamePreferencesProvider = ({
   );
 
   const chooseIcon = (icon: string) => {
-    if (iconChoices.playerOneIcon === "" && iconChoices.playerTwoIcon === "") {
-      if (icon === "cross") {
-        setIconChoices({
-          playerOneIcon: "cross",
-          playerTwoIcon: "circle",
-        });
-      } else {
-        setIconChoices({
-          playerOneIcon: "circle",
-          playerTwoIcon: "cross",
-        });
-      }
-    } else return;
+    if (icon === "cross") {
+      setIconChoices({
+        playerOneIcon: "cross",
+        playerTwoIcon: "circle",
+      });
+    } else {
+      setIconChoices({
+        playerOneIcon: "circle",
+        playerTwoIcon: "cross",
+      });
+    }
   };
 
   const chooseTypeOfGame = (gameType: string) => {
     if (typeOfGame === "") {
       if (gameType === "CPU") {
         setTypeOfGame("CPU");
-        startGame();
       } else {
         setTypeOfGame("Multiplayer");
-        startGame();
       }
+      startGame();
     } else return;
   };
 
