@@ -82,13 +82,6 @@ export const CardGame = ({ id }: ICardGame) => {
   const [disabled, setDisabled] = useState(false);
   const [isWinnerCard, setIsWinnerCard] = useState(false);
 
-  useEffect(() => {
-    setCardIcon("");
-    setDisabled(false);
-    setIsWinnerCard(false);
-    setEndGame(false);
-  }, [endGame, setEndGame]);
-
   const makeMove = (id: number) => {
     if (turn === "cross") {
       setCardIcon(cross);
@@ -146,6 +139,13 @@ export const CardGame = ({ id }: ICardGame) => {
       setVictory("Empate");
     }
   }, [circleMoves, crossMoves, styleVictoryCards, setVictory]);
+
+  useEffect(() => {
+    setCardIcon("");
+    setDisabled(false);
+    setIsWinnerCard(false);
+    setEndGame(false);
+  }, [endGame, setEndGame]);
 
   return (
     <CardGameContainer

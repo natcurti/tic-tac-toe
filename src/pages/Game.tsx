@@ -51,8 +51,6 @@ export const GamePage = () => {
     circle = "O";
   }
 
-  console.log(playerChoices, iconChoices);
-
   return (
     <>
       <Header>
