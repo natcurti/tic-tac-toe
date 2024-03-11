@@ -6,7 +6,7 @@ Projeto Jogo da Velha. Você deve escolher se quer jogar com o "X" ou com o "O",
 
 Para construção desse projeto foram utilizados:
 
-- React
+- React + Vite
 - TypeScript
 - Styled Components
 - React Router Dom
@@ -24,5 +24,9 @@ Depois você pode rodar a aplicação com o comando:
 ```
 npm run dev
 ```
+
+## 👇 Confira o projeto pelo link:
+
+https://tic-tac-toe-six-jade.vercel.app/
 
 #### 📌 O figma utilizado para criação deste projeto foi disponibilizado pelo Frontend Mentor.
