@@ -13,6 +13,7 @@ const SectionContainer = styled.section`
 
 export const Home = () => {
   const { chooseTypeOfGame } = useContext(GamePreferencesContext);
+
   return (
     <>
       <header>

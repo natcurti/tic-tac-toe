@@ -6,6 +6,7 @@ import { GamePreferencesProvider } from "./context/GamePreferencesContext";
 import { WhoIsTurnProvider } from "./context/WhoIsTurnContext";
 import { MovesContextProvider } from "./context/MovesContext";
 import { VictoryContextProvider } from "./context/VictoryContext";
+import { ComputerTurnProvider } from "./context/ComputerTurnContext";
 
 function App() {
   return (
@@ -16,10 +17,12 @@ function App() {
           <WhoIsTurnProvider>
             <MovesContextProvider>
               <VictoryContextProvider>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/new-game" element={<GamePage />} />
-                </Routes>
+                <ComputerTurnProvider>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/new-game" element={<GamePage />} />
+                  </Routes>
+                </ComputerTurnProvider>
               </VictoryContextProvider>
             </MovesContextProvider>
           </WhoIsTurnProvider>

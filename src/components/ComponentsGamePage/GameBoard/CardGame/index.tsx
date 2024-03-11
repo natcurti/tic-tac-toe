@@ -8,6 +8,8 @@ import { WhoIsTurnContext } from "src/context/WhoIsTurnContext";
 import { MovesContext } from "src/context/MovesContext";
 import checkWinner from "src/utils/checkWinner";
 import { VictoryContext } from "src/context/VictoryContext";
+import { ComputerTurnContext } from "src/context/ComputerTurnContext";
+import { GamePreferencesContext } from "src/context/GamePreferencesContext";
 
 const CardGameContainer = styled.div<{
   $iconHover: string;
@@ -81,19 +83,45 @@ export const CardGame = ({ id }: ICardGame) => {
   const [iconHover, setIconHover] = useState("cross");
   const [disabled, setDisabled] = useState(false);
   const [isWinnerCard, setIsWinnerCard] = useState(false);
+  const { isComputerTurn, setIsComputerTurn, randomId } =
+    useContext(ComputerTurnContext);
+  const { typeOfGame, playerChoices } = useContext(GamePreferencesContext);
 
-  const makeMove = (id: number) => {
-    if (turn === "cross") {
-      setCardIcon(cross);
-      setCrossMoves((previous) => [...previous, id]);
-      setTurn("circle");
-    } else {
-      setCardIcon(circle);
-      setCircleMoves((previous) => [...previous, id]);
-      setTurn("cross");
+  useEffect(() => {
+    if (typeOfGame === "CPU") {
+      if (playerChoices.playerOne === "Computer" && turn === "cross") {
+        setIsComputerTurn(true);
+      }
+      if (playerChoices.playerOne === "Person" && turn === "circle") {
+        setIsComputerTurn(true);
+      }
     }
-    setDisabled(true);
-  };
+  }, [typeOfGame, setIsComputerTurn, playerChoices, turn]);
+
+  const makeMove = useCallback(
+    (id: number) => {
+      if (turn === "cross") {
+        setCardIcon(cross);
+        setCrossMoves((previous) => [...previous, id]);
+        setTurn("circle");
+      } else {
+        setCardIcon(circle);
+        setCircleMoves((previous) => [...previous, id]);
+        setTurn("cross");
+      }
+      setDisabled(true);
+    },
+    [turn, setTurn, setCrossMoves, setCircleMoves]
+  );
+
+  useEffect(() => {
+    if (isComputerTurn && id === randomId && victory === "") {
+      setIsComputerTurn(false);
+      setTimeout(() => {
+        makeMove(randomId);
+      }, 500);
+    }
+  }, [id, isComputerTurn, randomId, makeMove, setIsComputerTurn, victory]);
 
   const styleVictoryCards = useCallback(
     (winner: string, cards: number[]) => {
@@ -135,10 +163,18 @@ export const CardGame = ({ id }: ICardGame) => {
         setVictory("cross");
       }
     }
-    if (circleMoves.length + crossMoves.length === 9) {
+    if (circleMoves.length + crossMoves.length === 9 && victory === "") {
       setVictory("Empate");
     }
-  }, [circleMoves, crossMoves, styleVictoryCards, setVictory]);
+  }, [
+    circleMoves,
+    crossMoves,
+    styleVictoryCards,
+    victory,
+    setVictory,
+    setIsComputerTurn,
+    typeOfGame,
+  ]);
 
   useEffect(() => {
     setCardIcon("");
