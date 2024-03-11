@@ -22,7 +22,7 @@ npm install
 Depois você pode rodar a aplicação com o comando:
 
 ```
-npm start
+npm run dev
 ```
 
 #### 📌 O figma utilizado para criação deste projeto foi disponibilizado pelo Frontend Mentor.
