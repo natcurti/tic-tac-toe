@@ -1,4 +1,4 @@
-import GlobalStyle from "./globalStyle";
+import GlobalStyle from "./GlobalStyle";
 import { GamePage } from "./pages/Game";
 import { Home } from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
